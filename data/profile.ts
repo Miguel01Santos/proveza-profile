@@ -70,6 +70,7 @@ export const profile = {
   contact: {
     email: "", // TODO: seu email pessoal
     github: "https://github.com/Miguel01Santos",
+    githubUser: "Miguel01Santos",
     linkedin: "", // TODO: link do seu LinkedIn
   },
 };

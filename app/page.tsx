@@ -1,9 +1,12 @@
 import { profile } from "@/data/profile";
 import { Section } from "@/components/Section";
 import { Typewriter } from "@/components/Typewriter";
+import { CodeStats } from "@/components/CodeStats";
+import { Suspense } from "react";
 
 const nav = [
   { id: "sobre", label: "sobre" },
+  { id: "codigo", label: "código" },
   { id: "projetos", label: "projetos" },
   { id: "experiencia", label: "experiência" },
   { id: "contato", label: "contato" },
@@ -97,8 +100,17 @@ export default function Home() {
             </div>
           </Section>
 
+          {/* Código */}
+          <Section id="codigo" index="02" title="código">
+            <Suspense
+              fallback={<p className="font-mono text-sm text-muted">carregando estatísticas…</p>}
+            >
+              <CodeStats githubUser={profile.contact.githubUser} />
+            </Suspense>
+          </Section>
+
           {/* Projetos */}
-          <Section id="projetos" index="02" title="projetos">
+          <Section id="projetos" index="03" title="projetos">
             <div className="grid gap-4 sm:grid-cols-2">
               {profile.projects.map((p) => {
                 const Card = p.link ? "a" : "div";
@@ -126,7 +138,7 @@ export default function Home() {
           </Section>
 
           {/* Experiência */}
-          <Section id="experiencia" index="03" title="experiência">
+          <Section id="experiencia" index="04" title="experiência">
             <ol className="relative space-y-10 border-l border-border pl-8">
               {profile.experience.map((e) => (
                 <li key={e.title + e.org} className="relative">
@@ -142,7 +154,7 @@ export default function Home() {
           </Section>
 
           {/* Contato */}
-          <Section id="contato" index="04" title="contato">
+          <Section id="contato" index="05" title="contato">
             <div className="max-w-xl">
               <p className="text-lg leading-relaxed text-muted">
                 Tem um projeto, uma vaga ou só quer trocar uma ideia? Minha caixa de entrada está aberta.
